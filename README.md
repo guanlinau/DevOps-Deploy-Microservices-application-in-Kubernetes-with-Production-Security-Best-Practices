@@ -14,9 +14,15 @@ Kubernetes, Redis, Linux, Linode LKE
 
 ###### Step 1 : Draw the maps of the microservices structure
 
+![image](images/Screenshot%202023-05-13%20at%2010.12.53%20am.png)
+
 ###### Step 2: Highlight the ENV variables desired for application
 
+![image](images/Screenshot%202023-05-13%20at%2010.13.04%20am.png)
+
 ###### Step 3: Check the images and port numbers
+
+![image](images/Screenshot%202023-05-13%20at%2010.13.42%20am.png)
 
 ###### Step 4: Create and configure the microservices deployment and services configuration yaml
 
@@ -468,15 +474,19 @@ spec:
 
 ```
 
-###### Step 6: Create an cluster with 3 node on Linode and download the kubeconfig.yaml file
+###### Step 6: Create an cluster with 3 node on Linode and download the kubeconfig.yaml file and move it to the root directory of the project.
 
 ###### Step 7: Change the permission of the kubeconfig.yaml for owner read only
 
 ```
-chmod 600 ~/Downloads/online-shop-kubeconfig.yaml
+chmod 600 online-shop-kubeconfig.yaml
 ```
 
 ###### Step 8: export online-shop-kubeconfig.yaml as a ENV variable KUBECONFIG
+
+```
+export KUBECONFIG=online-shop-kubeconfig.yaml
+```
 
 ###### Step 9: Create a namespace
 
@@ -487,7 +497,23 @@ kubectl create ns microservices
 ###### Step 11: Create 11 deployment and service into the created namespace
 
 ```
-kubectl apply -f config.yaml -n microservices
+kubectl apply -f config.yaml --namespace=microservices
 ```
 
+###### Step 12: Check running pods in microservices namespace
+
+![image](images/Screenshot%202023-05-13%20at%209.23.14%20am.png)
+
+###### Step 13: Check svs in microservices namespace
+
+![image](images/Screenshot%202023-05-13%20at%209.23.44%20am.png)
+
 ###### Step 12: Browser the app via 1 or 3 node ip address with front-end service port number
+
+![image](images/Screenshot%202023-05-13%20at%209.24.27%20am.png)
+
+```
+194.195.240.188:30007
+```
+
+![image](images/Screenshot%202023-05-13%20at%209.24.52%20am.png)
