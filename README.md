@@ -33,6 +33,7 @@ kind: Deployment
 metadata:
   name: emailservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: emailservice
@@ -88,6 +89,7 @@ kind: Deployment
 metadata:
   name: recommendationservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: recommendationservice
@@ -147,6 +149,7 @@ kind: Deployment
 metadata:
   name: paymentservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: paymentservice
@@ -196,6 +199,7 @@ kind: Deployment
 metadata:
   name: productcatalogservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: productcatalogservice
@@ -245,6 +249,7 @@ kind: Deployment
 metadata:
   name: currencyservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: currencyservice
@@ -294,6 +299,7 @@ kind: Deployment
 metadata:
   name: shippingservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: shippingservice
@@ -344,6 +350,7 @@ kind: Deployment
 metadata:
   name: adservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: adservice
@@ -397,6 +404,7 @@ kind: Deployment
 metadata:
   name: cartservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: cartservice
@@ -451,6 +459,7 @@ kind: Deployment
 metadata:
   name: checkoutservice
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: checkoutservice
@@ -512,6 +521,7 @@ kind: Deployment
 metadata:
   name: frontend
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: frontend
@@ -569,19 +579,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
-spec:
-  type: ClusterIP
-  selector:
-    app: frontend
-  ports:
-    - name: http
-      port: 80
-      targetPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
   name: frontend-external
 spec:
   type: LoadBalancer
@@ -598,6 +595,7 @@ kind: Deployment
 metadata:
   name: redis-cart
 spec:
+  replicas:2
   selector:
     matchLabels:
       app: redis-cart
